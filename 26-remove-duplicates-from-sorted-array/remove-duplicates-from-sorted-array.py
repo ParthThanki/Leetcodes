@@ -3,7 +3,7 @@ class Solution:
         i = 0
         j = 1
 
-        while True:
+        while i <= len(nums):
             if j >= len(nums):
                 return len(nums)
                 break
