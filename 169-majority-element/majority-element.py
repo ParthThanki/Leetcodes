@@ -1,11 +1,9 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        count = 0
-        candidate = None
-
-        for num in nums:
-            if count == 0:
-                candidate = num
-            count += (1 if num == candidate else -1)
-
-        return candidate if nums.count(candidate) > len(nums) // 2 else None
+        checkin = []
+        for i in nums:
+            if i not in checkin:
+                checkin.insert(i,i)
+                if nums.count(i) > len(nums)/2:
+                    return i
+                    break
