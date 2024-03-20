@@ -1,13 +1,20 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        from collections import Counter
-        # Utilizing Counter to efficiently count frequencies and extract the most common elements
-        frequency_count = Counter(nums)
+        mp = dict()
+        buckets = [[] for i in range(len(nums) + 1)]
 
-        # Since we only need the first k elements based on their frequency, we can directly access them
-        # This step inherently sorts the elements by frequency in descending order and selects the top k.
-        most_common_elements = frequency_count.most_common(k)
+        # Step 3: Iterate through the array to populate the `mp` dictionary.
+        for n in nums:
+            mp[n] = 1 + mp.get(n, 0)
 
-        # Extract just the elements (ignoring the counts) and print them
-        ans = [element for element, count in most_common_elements]
-        return ans
+        # Step 4: Iterate through the items in `mp` and distribute elements into the corresponding buckets based on their frequency.
+        for n, c in mp.items():
+            buckets[c].append(n)
+
+        # Step 5: Iterate through the buckets from right to left (highest to lowest frequency) and append elements to the answer list until the desired k elements are collected.
+        ans = []
+        for i in range(len(buckets) - 1, 0, -1):
+            for n in buckets[i]:
+                ans.append(n)
+                if len(ans) == k:
+                    return ans
