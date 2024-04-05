@@ -1,13 +1,16 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        check = 0
-        x = 1
+        if len(nums) == 1:
+            return len(nums)
+        
+        count = 0
 
-        while x < len(nums):
-            if nums[check] == nums[x]:
-                nums.pop(check)
-                x = check + 1
+        while count < len(nums):
+            if nums[count] != nums[count-1]:
+                count += 1
+            elif len(nums) != 1:
+                nums.remove(nums[count])
             else:
-                check += 1
-                x = check + 1
-
+                count = len(nums)
+                break
+        return count
