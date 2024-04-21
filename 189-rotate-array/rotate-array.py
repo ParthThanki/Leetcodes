@@ -3,19 +3,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        n = len(nums)
-        k = k % n  # Handles the case where k is greater than n
-
-        # Helper function to reverse a portion of the list
-        def reverse(start, end):
-            while start < end:
-                nums[start], nums[end] = nums[end], nums[start]
-                start += 1
-                end -= 1
-        
-        # Step 1: Reverse the entire list
-        reverse(0, n-1)
-        # Step 2: Reverse the first k elements
-        reverse(0, k-1)
-        # Step 3: Reverse the rest
-        reverse(k, n-1)
+        change = 0
+        while change < k:
+            if len(nums) == k:
+                print(nums)
+                break
+            elif change < k:
+                nums.insert(0,nums[-1])
+                del nums[-1]
+                change += 1
