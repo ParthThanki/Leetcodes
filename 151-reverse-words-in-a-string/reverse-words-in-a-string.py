@@ -1,6 +1,6 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        newS = s.split(" ")
+        """newS = s.split(" ")
 
         new = ""
 
@@ -10,5 +10,6 @@ class Solution:
             else:
                 new += newS[num-1]
                 new += " "
-        return(new.strip())
+        return(new.strip())"""
+        return " ".join(reversed(s.split()))
                 
