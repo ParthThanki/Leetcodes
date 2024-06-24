@@ -7,7 +7,7 @@ class Solution:
 
         ans = int(temp) + 1
 
-        ans = [int(x) for x in str(ans)]
+        x = [int(x) for x in str(ans)]
 
-        return ans
+        return x
         
