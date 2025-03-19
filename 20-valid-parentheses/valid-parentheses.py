@@ -1,19 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        # Dictionary to hold matching pairs
-        matching_pairs = {')': '(', '}': '{', ']': '['}
+        bracket_map = {')': '(', '}': '{', ']': '['}
         
         for char in s:
-            if char in matching_pairs:
-                # Pop the top element from the stack if it's not empty; otherwise, use a dummy value
-                top_element = stack.pop() if stack else '#'
-                # Check if the popped element matches the current closing bracket
-                if matching_pairs[char] != top_element:
+            if char in bracket_map:
+                if stack and stack[-1] == bracket_map[char]:
+                    stack.pop()
+                else:
                     return False
             else:
-                # It's an opening bracket, push onto the stack
                 stack.append(char)
         
-        # The stack should be empty if the string is valid
         return not stack
