@@ -7,7 +7,7 @@ var countStudents = function(students, sandwiches) {
 
     let count = 0;
 
-    while(count < students.length && !!students.length) {
+    while(count < students.length) {
 
         if(students[0] === sandwiches[0]) {
             count = 0;
