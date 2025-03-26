@@ -14,7 +14,7 @@ var countStudents = function(students, sandwiches) {
             students.shift();
             sandwiches.shift();
         } else {
-            count++;
+            count += 1;
             let val = students.shift();
             students.push(val);
         }
